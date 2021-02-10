@@ -1,4 +1,7 @@
 let ROLE = null; // Possible values: 'master', 'viewer', null
+var time1 = new Date().getTime();
+
+console.log("the current time is : ", time1);
 
 function configureLogging() {
     function log(level, messages) {
@@ -141,7 +144,12 @@ $('#viewer-button').click(async () => {
     toggleDataChannelElements();
 
     startViewer(localView, remoteView, formValues, onStatsReport, event => {
+        console.log("Previous ts time:", time1);
+        var time2 = new Date().getTime();
+        console.log("The time between the two .ts files is", time2 - time1);
+        time1 = time2;
         remoteMessage.append(`${event.data}\n`);
+       
     });
 });
 
